@@ -1,3 +1,56 @@
+## [12.3.0] - 2021-07-11
+### Added
+- Organize your projects with **Tags** (issue [#50](https://github.com/alefragnani/vscode-project-manager/issues/50))
+- Documentation about how to use the extension on Remote Development (issue [#477](https://github.com/alefragnani/vscode-project-manager/issues/477))
+- Use specific icons for each kind of remote project (issue [#483](https://github.com/alefragnani/vscode-project-manager/issues/483))
+
+## [12.2.0] - 2021-06-10
+### Added
+- Support **Virtual Workspaces** (issue [#500](https://github.com/alefragnani/vscode-project-manager/issues/500))
+- Support **Workspace Trust** (issue [#499](https://github.com/alefragnani/vscode-project-manager/issues/499))
+- Support `.code-workspace` projects ocated on remotes (issue [#486](https://github.com/alefragnani/vscode-project-manager/issues/486))
+
+### Fixed
+- Favorite projects missing icons for Folders when using None or Seti Icon Theme (issue [#496](https://github.com/alefragnani/vscode-project-manager/issues/496))
+
+### Internal
+- Security Alert: lodash (dependabot [PR #503](https://github.com/alefragnani/vscode-project-manager/pull/503))
+- Security Alert: ssri (dependabot [PR #495](https://github.com/alefragnani/vscode-project-manager/pull/495))
+
+## [12.1.0] - 2021-04-02
+### Added
+- Save GitHub Codespaces projects always as "remote project" (issue [#479](https://github.com/alefragnani/vscode-project-manager/issues/479))
+
+### Changed
+- Do not show welcome message if installed by Settings Sync (issue [#459](https://github.com/alefragnani/vscode-project-manager/issues/459))
+
+### Fixed
+- Mercurial projects not found (issue [#438](https://github.com/alefragnani/vscode-project-manager/issues/438))
+
+### Internal
+- Update whats-new submodule API (issue [#456](https://github.com/alefragnani/vscode-project-manager/issues/456))
+- Add badges to Readme (issue [#359](https://github.com/alefragnani/vscode-project-manager/issues/359))
+- Security Alert: y18n (dependabot [PR #482](https://github.com/alefragnani/vscode-project-manager/pull/482))
+- Security Alert: elliptic (dependabot [PR #472](https://github.com/alefragnani/vscode-project-manager/pull/472))
+
+## [12.0.1] - 2020-11-23
+### Fixed
+- Conflict with non-unique command (issue [#441](https://github.com/alefragnani/vscode-project-manager/issues/441))
+
+## [12.0.0] - 2020-11-19
+### Added
+- `Open Settings` command to the Side Bar (issue [#434](https://github.com/alefragnani/vscode-project-manager/issues/434))
+- Concatenates the "Number of Projects" on each Panel in the Side Bar (issue [#267](https://github.com/alefragnani/vscode-project-manager/issues/267))
+- `Reveal in Finder/Explorer` command in the Side Bar's context menu (issue [#322](https://github.com/alefragnani/vscode-project-manager/issues/322))
+- Setting to decide if auto-detected projects should ignore projects found inside other projects (issue [#189](https://github.com/alefragnani/vscode-project-manager/issues/189))
+
+### Internal
+- Use `vscode-ext-help-and-feedback` package (issue [#432](https://github.com/alefragnani/vscode-project-manager/issues/432))
+
+## [11.3.1] - 2020-10-16
+### Internal
+- Update CodeStream sponsorship details
+
 ## [11.3.0] - 2020-09-06
 ### Added
 - Support `$home` and `~` (tilde) symbol on `projectLocation` setting (issue [#384](https://github.com/alefragnani/vscode-project-manager/issues/384))

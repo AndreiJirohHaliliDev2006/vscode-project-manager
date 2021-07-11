@@ -1,19 +1,19 @@
+[![](https://vsmarketplacebadge.apphb.com/version-short/alefragnani.project-manager.svg)](https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager)
+[![](https://vsmarketplacebadge.apphb.com/downloads-short/alefragnani.project-manager.svg)](https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager)
+[![](https://vsmarketplacebadge.apphb.com/rating-short/alefragnani.project-manager.svg)](https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager)
+
 <p align="center">
   <br />
   <a title="Learn more about Project Manager" href="http://github.com/alefragnani/vscode-project-manager"><img src="https://raw.githubusercontent.com/alefragnani/vscode-project-manager/master/images/vscode-project-manager-logo-readme.png" alt="Project Manager Logo" width="70%" /></a>
 </p>
 
-# What's new in Project Manager 11.3
+# What's new in Project Manager 12.3
 
-* Adds an all-new **Side Bar**
-* Support **Remote Development** support
-* Support open **Remote Projects** from local installation
-* Adds support to save **Workspaces** as Projects
-* Adds `Add Project to Workspace` command to **Command Palette**
-* Adds **Portable Mode** support
-* Adds `Disable Project`, `Add to Workspace`, `Add to Favorites` and `Refresh Project` commands in **Side Bar**
-* Adds `Open in New Window` hover command in **Side Bar**
-* Adds **Localization** support
+* Organize your projects with **Tags**
+* Adds **Virtual Workspaces** support
+* Adds **Workspace Trust** support
+* Improved **Side Bar** usability
+* Full **Remote Development** support
 
 # Support
 
@@ -35,8 +35,8 @@
 
 ## Sponsors
 
-<a title="Try CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&utm_campaign=projectmanager&utm_medium=banner"><img src="https://alt-images.codestream.com/codestream_logo_projectmanager.png" width="35%"/></a></br>
-Discussing code is now as easy as highlighting a block and typing a comment right from your IDE. Take the pain out of code reviews and improve code quality.<br> <a title="Try CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&utm_campaign=projectmanager&utm_medium=banner">Try it free</a>
+<a title="Learn more about CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&utm_campaign=projectmanager&utm_medium=banner"><img src="https://alt-images.codestream.com/codestream_logo_projectmanager.png" width="35%"/></a></br>
+Eliminate context switching and costly distractions. Create and merge PRs and perform code reviews from inside your IDE while using jump-to-definition, your keybindings, and other IDE favorites.<br> <a title="Learn more about CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&utm_campaign=projectmanager&utm_medium=banner">Learn more</a>
 
 <br>
 
@@ -48,9 +48,9 @@ You can define your own **Projects** (also called **Favorites**), or choose for 
 
 Here are some of the features that **Project Manager** provides:
 
-* Save any folder as a **Project**
-* Save any workspace as a **Project**
+* Save any folder or workspace as a **Project**
 * Auto-detect **Git**, **Mercurial** or **SVN** repositiories
+* Organize your projects using **Tags**
 * Open projects in the same or new window
 * Identify _deleted/renamed_ projects
 * A **Status Bar** which identifies the current project
@@ -64,7 +64,7 @@ Here are some of the features that **Project Manager** provides:
 * `Project Manager: Edit Project` Edit your projects manually (`projects.json`)
 * `Project Manager: List Projects to Open` List all saved/detected projects and pick one
 * `Project Manager: List Projects to Open in New Window` List all saved/detected projects and pick one to be opened in New Window
-* `Project Manager: Refresh Projects` Refresh the cached projects
+* `Project Manager: Filter Projects by Tag` Filter the Favorite projects by selected tags
 
 ## Manage your projects
 
@@ -85,32 +85,31 @@ For easier customization of your project list, you can edit the `projects.json` 
     {
         "name": "Pascal MI",
         "rootPath": "c:\\PascalProjects\\pascal-menu-insight",
-        "paths": [],
-        "group": "",
+        "tags": [],
         "enabled": true
     },
     {
         "name": "Bookmarks",
         "rootPath": "$home\\Documents\\GitHub\\vscode-bookmarks",
-        "paths": [],
-        "group": "",
+        "tags": [
+            "Personal",
+            "VS Code"
+        ],
         "enabled": true
     },
     {
         "name": "Numbered Bookmarks",
         "rootPath": "~\\Documents\\GitHub\\vscode-numbered-bookmarks",
-        "paths": [],
-        "group": "",
+        "tags": [
+            "Personal",
+            "VS Code"
+        ],
         "enabled": false
     }
 ]
 ```
 
-For now, only `name`, `rootPath`, and `enabled` fields are used.
-
 > You can use `~` or `$home` while defining any path. It will be replaced by your HOME folder.
-
-> Projects that are *not* `enabled` will be hidden from project listings until re-enabled.
 
 > Be sure that the JSON file is well-formed. Otherwise, **Project Manager** will not be able to open it, and an error message like this should appear. In this case, you should use the `Open File` button to fix it.
 
@@ -139,6 +138,34 @@ Just use the `when` clause `"inProjectManagerList"`, like:
         "when": "inProjectManagerList"
     }
 ```
+
+## Working with Remotes
+
+The extension support [Remote Development](https://code.visualstudio.com/docs/remote/remote-overview) scenarios, and you may choose how to use it, depending on your needs
+
+### I access Remotes, but most of my work is Local
+
+This is the _regular_ scenario, and that's why you don't need to do anything special for the extension to work. It works out of the box.
+
+When installed locally, you can save any Container, SSH, WSL or Codespaces projects as Favorites. Each one will have its own icon to be properly identified, and when you select them, VS Code will open the remote automatically.
+
+_It just works_
+
+### But what if I do most of my work on Remotes
+
+If you normally connect to remotes (like SSH/WSL) and would like to save Favorite projects on that remote, or to be able to auto-detect repos located on that remote, you must activate/install the extension to work on remotes. 
+
+You just have to add the lines below on your `User Settings`.
+
+```json
+    "remote.extensionKind": {
+        "alefragnani.project-manager": [
+            "workspace"
+        ]
+    },
+```
+
+> More details on [VS Code documentation](https://code.visualstudio.com/docs/remote/containers#_advanced-forcing-an-extension-to-run-locally-or-remotely)
 
 ## Available Settings
 
@@ -218,6 +245,12 @@ If you intend to _share_ projects between  **Stable** and **Insider** installati
 ```
 > Define how deeps it should search for projects
 
+* Should ignore projects found inside other projects? (`false` by default)
+
+```json 
+    "projectManager.ignoreProjectsWithinProjects": true
+```
+
 * Cache automatically detected projects (`true` by default)
 
 ```json 
@@ -247,17 +280,30 @@ If you intend to _share_ projects between  **Stable** and **Insider** installati
     "projectManager.openInCurrenWindowIfEmpty": "always"
 ```
 
+* Indicates the list of tags you can use to organize your projects _(`Personal` and `Work` by default)_
+
+```json
+    "projectManager.tags": [
+        "Personal", 
+        "Work",
+        "VS Code",
+        "Learning"
+    ]
+```
+
 ## Side Bar
 
-The **Projects** are now presented in its own **Side Bar**, giving you more free space in your Explorer view. You will have a few extra commands available:
+The **Project Manager** extension has its own **Side Bar**, with a variety of commands to improve you productivity. 
 
-* Open a project, simply clicking in the project item
-* Open a project in a New Window, right clicking in the project item, or using the hover button
-* Add a project to the current Workspace
+![Side Bar](images/vscode-project-manager-side-bar.png)
 
-![Side Bar](images/vscode-project-manager-side-bar.gif)
+### Project Tags - View and Filter
 
-> If you don't want to see the **Project Manager** icon in the Activity Bar, right-click and uncheck it from the context menu. 
+Starting in v12.3, you can now organize your Projects with **Tags**. 
+
+You can define your custom tags (via `projectManager.tags` setting), define multiple **tags** for each project, and filter the projects baded on their **tags**. 
+
+![Side Bar](images/vscode-project-manager-side-bar-tags.gif)
 
 ## Installation and Configuration
 
